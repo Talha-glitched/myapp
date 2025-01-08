@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import './add_task_page.dart'; // Replace with the actual path to your AddTaskPage file
-
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure that widgets are bound
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

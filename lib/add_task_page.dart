@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class AddTaskPage extends StatefulWidget {
   const AddTaskPage({super.key});
@@ -33,6 +34,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   Future<void> _addTaskToFirestore() async {
     if (_formKey.currentState!.validate() && _selectedDueDate != null) {
       try {
+        // Adding the task to Firestore
         await FirebaseFirestore.instance.collection('tasks').add({
           'taskName': _taskNameController.text,
           'description': _descriptionController.text,
@@ -136,4 +138,3 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 }
-
